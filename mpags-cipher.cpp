@@ -1,17 +1,23 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
-int main()
+int main(int argc, char* argv[])
 {
-	char in_char('\0');
+	std::vector<std::string> cmdargs{argv, argv+argc};
+	for (size_t i{0}; i < cmdargs.size(); i++)
+	{
+		std::cout << "Index " << i << " " << cmdargs[i] << std::endl;
+	} 
+	char in_char;
 	std::string out_msg;
 	std::cout << "Enter text to be encrypted." << std::endl;
 	while(std::cin >> in_char)
 	{
-		if (in_char == '\n') {continue;} //contiue if return
-//		else if (in_char == ' ') {out_msg += ' '; continue;} //detect space; preserved for legibility
+//		if (in_char == '\n') {std::cout << "here" << std::endl; continue;} //contiue if return
+		if (isspace(in_char)) {out_msg += ' ';} //detect space; preserved for legibility
 		else if (isalnum(in_char)) //alphanumeric check
-		{
+		{ 
 		  if ((int) in_char >= 48 && (int) in_char <= 57) //digit check
 		  {
 		    switch (in_char)
@@ -40,8 +46,8 @@ int main()
 		  }
 		  else {out_msg += toupper(in_char);} // convert to upper and append to string
 		}
-		else {continue;} //if not alphanumneric or space, just continue taking input until CTRL+d
+//		else {continue;} //if not alphanumneric or space, just continue taking input until CTRL+d
 	}
-	std::cout << out_msg << std::endl;
+	std::cout << '\n'+out_msg << std::endl;
 	return 0;
 }
