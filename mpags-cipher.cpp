@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 #include "TransformChar.hpp"
@@ -40,18 +41,11 @@ int main(int argc, char* argv[])
 	std::string inputFileName, outputFileName;
 	bool parserOut;
 	parserOut = processCommandLine(cmdargs, helpRequested, versionRequested, inputFileName, outputFileName);
-	if (parserOut == 0)
-	{
-		return 0;
-	}
-	else
-	{
-		std::cout << inputFileName << outputFileName << std::endl;
-	}
-	char in_char;
+	if (parserOut == 0){return 0;} //error when parsing
+	std::ifstream in_file{inputFileName};
+	std::ofstream out_file{outputFileName};
 	std::string out_msg;
 	std::cout << "Enter text to be encrypted." << std::endl;
-
 	std::cout << '\n'+out_msg << std::endl;
 	return 0;
 }
