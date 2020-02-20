@@ -2,7 +2,7 @@
 
 std::string transformChar(const char in_char)
 {
-  char out_char{'\0'};
+  std::string out_char("");
 //if (in_char == '\n') {std::cout << "here" << std::endl; continue;} //contiue if return
   if (isspace(in_char)) {out_char = ' ';} //detect space; preserved for legibility
   else if (isalnum(in_char)) //alphanumeric check
