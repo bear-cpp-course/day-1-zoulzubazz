@@ -23,19 +23,17 @@ bool processCommandLine(const std::vector<std::string>& args,
 		}
 		if (args[i] == "-k")
 		{
-                        i+=1;
-                        if (i > args.size()-1){ std::cout << "No key provided.!!" << std::endl; return 0;}
+      i+=1;
+      if (i > args.size()-1){ std::cout << "No key provided.!!" << std::endl; return 0;}
 			else if (isdigit(args[i][0])){ std::cout << "Not a valid key, please provide a number as key.!!" << std::endl; return 0;}
-                        else  key = std::stoi(args[i]);
+      else  key = std::stoi(args[i]);
 		}
-                if (args[i] == "encrypt" || args[i] == "decrypt")
-                {
-                	operation = args[i];
+    if (args[i] == "encrypt" || args[i] == "decrypt")
+    {
+    	operation = args[i];
 			return 1;
-                }
+    }
 		//else {helpRequested = 1; return 0;}
-
-
 	}
 return 1;
 }

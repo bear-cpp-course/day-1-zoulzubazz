@@ -22,6 +22,7 @@ int main(int argc, char* argv[])
     out_msg += transformChar(in_char);
   }
   std::cout << '\n'+out_msg << std::endl;
+  runCeaserCipher(out_msg, 1)
   return 0;
 }
 
