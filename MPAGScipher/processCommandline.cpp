@@ -6,8 +6,8 @@ bool processCommandLine(const std::vector<std::string>& args,
 			int& key, std::string& operation)
 {
 	for (size_t i{0}; i < args.size(); i++)
-	{std::cout << "here" << std::endl;
-		if (args[i] == "-h" || args[i] == "--help") { std::cout<<"here is some help, bazinga!!" << std::endl; helpRequested = 1; return 1; } //print help text
+	{
+		if (args[i] == "-h" || args[i] == "--help") { std::cout << "No Help!" << std::endl; helpRequested = 1; return 1; } //print help text
 		if (args[i] == "-v" || args[i] == "--version") { versionRequested = 1; return 1; } // print version information
 		if (args[i] == "-i")
 		{
@@ -33,7 +33,7 @@ bool processCommandLine(const std::vector<std::string>& args,
                 	operation = args[i];
 			return 1;
                 }
-		else {helpRequested = 1; return 0;}
+		//else {helpRequested = 1; return 0;}
 
 
 	}

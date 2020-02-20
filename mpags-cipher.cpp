@@ -11,14 +11,12 @@ int main(int argc, char* argv[])
   std::vector<std::string> cmdargs{argv, argv+argc};
   bool helpRequested(0), versionRequested(0), parserOut(0);
   int key;
-  std::string inputFileName, outputFileName, operation;
+  std::string inputFileName(""), outputFileName(""), operation(""), out_msg("");
   parserOut = processCommandLine(cmdargs, helpRequested, versionRequested, inputFileName, outputFileName, key, operation);
-  if (parserOut == 0){return 0;} //error when parsing
+  if (parserOut == 0){std::cout<< "Error Exiting"<<std::endl; return 0;} //error when parsing
   //std::ifstream in_file{inputFileName};
   //std::ofstream out_file{outputFileName};
-  std::cout << "hey" << std::endl;
   std::cout << "Enter text to be encrypted." << std::endl;
-  std::string out_msg("");
   char in_char{'\0'};
   while (std::cin >> in_char){
     out_msg += transformChar(in_char);
