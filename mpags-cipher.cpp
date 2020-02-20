@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include "TransformChar.hpp"
-#include "processCommandline.hpp"
+//#include "processCommandline.hpp"
 //#include "runCeaserCipher.hpp"
 
 /*struct Messages
@@ -11,7 +11,7 @@
  constexpr static const char * const helptxt = "This program uses obeselete ciphers to encrypt your text";
 }; */
 
-int main(int argc, char* argv[])
+int main()
 {
 	//std::vector<std::string> cmdargs{argv, argv+argc};
 	//bool helpRequested(0), versionRequested(0);
@@ -22,9 +22,10 @@ int main(int argc, char* argv[])
 	//std::ifstream in_file{inputFileName};
 	//std::ofstream out_file{outputFileName};
   std::cout << "Enter text to be encrypted." << std::endl;
-  std::vector<std::string> out_msg;
+  std::string out_msg("");
+  char in_char{'\0'};
   while (std::cin >> in_char){
-    out_msg += TransformChar(in_char);
+    out_msg += transformChar(in_char);
   }
   std::cout << '\n'+out_msg << std::endl;
 	return 0;
