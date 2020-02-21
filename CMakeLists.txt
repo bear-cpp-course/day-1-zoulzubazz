@@ -6,7 +6,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(mpags-cipher mpags-cipher.cpp
-		MPAGScipher/TransformChar.cpp MPAGScipher/processCommandline.cpp)
+		MPAGScipher/TransformChar.cpp MPAGScipher/processCommandline.cpp MPAGScipher/runCeaserCipher.cpp)
 
 target_include_directories(mpags-cipher
 	PRIVATE MPAGScipher)

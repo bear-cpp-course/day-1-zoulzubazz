@@ -3,6 +3,6 @@
 
 #include <string>
 
-std::string ceaserCipher(const std::std::string& text, int& key);
+std::string ceaserCipher(std::string text,const int& key);
 
 #endif

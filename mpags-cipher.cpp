@@ -1,17 +1,17 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include "TransformChar.hpp"
+#include <iostream> 
+#include <fstream> 
+#include <string> 
+#include <vector> 
+#include "TransformChar.hpp" 
 #include "processCommandline.hpp"
-//#include "runCeaserCipher.hpp"
+#include "runCeaserCipher.hpp"
 
 int main(int argc, char* argv[])
 {
   std::vector<std::string> cmdargs{argv, argv+argc};
   bool helpRequested(0), versionRequested(0), parserOut(0);
-  int key;
-  std::string inputFileName(""), outputFileName(""), operation(""), out_msg("");
+  int key(27);
+  std::string inputFileName(""), outputFileName(""), operation(""), out_msg(""), out_txt("");
   parserOut = processCommandLine(cmdargs, helpRequested, versionRequested, inputFileName, outputFileName, key, operation);
   if (parserOut == 0){std::cout<< "Error Exiting"<<std::endl; return 0;} //error when parsing
   //std::ifstream in_file{inputFileName};
@@ -21,8 +21,8 @@ int main(int argc, char* argv[])
   while (std::cin >> in_char){
     out_msg += transformChar(in_char);
   }
-  std::cout << '\n'+out_msg << std::endl;
-  runCeaserCipher(out_msg, 1)
+  out_txt =  ceaserCipher(out_msg, key);
+  std::cout << '\n'+out_txt << std::endl;
   return 0;
 }
 
