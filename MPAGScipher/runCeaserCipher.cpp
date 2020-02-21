@@ -1,7 +1,10 @@
 #include "runCeaserCipher.hpp"
 
-std::string ceaserCipher(std::string text, const int& key)
-{
+CeaserCipher::CeaserCipher(int k) : key_ {k};
+
+CeaserCipher::CeaserCipher(std::string& k){key_ = std::stoi(k)}
+
+std::string CeaserCpher::appyCipher(const std::strin&, const bool enordec){
   int kk(key);
   if (key > 26){kk = key%26;}
   std::string out_text("");
@@ -10,4 +13,5 @@ std::string ceaserCipher(std::string text, const int& key)
     else {out_text += c + kk;}
   }
 return out_text;
+
 }
