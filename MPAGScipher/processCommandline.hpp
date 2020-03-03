@@ -5,18 +5,25 @@
 #include <cctype>
 #include <vector>
 #include <iostream>
-//Processes command line arguments
+#include "CipherMode.hpp"
 
-struct programSettings{
-  bool helpRequested;
-  bool versionRequested;
-  int key;
-  std::string inputFileName;
-  std::string outputFileName;
-  bool operation;
+/** Processes command line arguments input to the Ceaser cipher */
+
+class ProcessCmdArgs{
+  public:
+    struct programSettings {
+      bool helpRequested = false;
+      bool versionRequested = false;
+      bool inputError = false;
+      int key = 0;
+      std::string inputFileName = "";
+      std::string outputFileName = "";
+      CipherMode cMode {CipherMode::encrypt};
+    };
+  /*struct ProcessCmdArgs:: */
+programSettings processCommandLine(const std::vector<std::string>& args);
 };
 
 
-bool processCommandLine(const std::vector<std::string>&, programSettings&);
 
 #endif

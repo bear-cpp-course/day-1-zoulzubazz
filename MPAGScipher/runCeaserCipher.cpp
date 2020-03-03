@@ -1,17 +1,29 @@
 #include "runCeaserCipher.hpp"
+//#include "CipherMode.hpp"
 
-CeaserCipher::CeaserCipher(int k) : key_ {k};
+CeaserCipher::CeaserCipher(const int& k) : key_(k){}
 
-CeaserCipher::CeaserCipher(std::string& k){key_ = std::stoi(k)}
+CeaserCipher::CeaserCipher(const std::string& k) : key_(std::stoi(k)){}
 
-std::string CeaserCpher::appyCipher(const std::strin&, const bool enordec){
-  int kk(key);
-  if (key > 26){kk = key%26;}
+std::string CeaserCipher::applyCipher(const std::string& trans_msg, const CipherMode& cMode){
+  int kk(key_);
+  if (key_ > 26){kk = key_%26;}
   std::string out_text("");
-  for (const char &c : text){
-    if (c + kk > 90){ out_text += 65 + (c + kk - 91); }
-    else {out_text += c + kk;}
+  switch(cMode){
+  case CipherMode::encrypt:{
+    for (const char &c : trans_msg){
+      if (c + kk > 90){ out_text += 65 + kk - (91 - c); }
+      else {out_text += c + kk;}
+    }
+    break;
   }
-return out_text;
-
+  case CipherMode::decrypt:{
+    for (const char &c : trans_msg){
+      if (c - kk < 65){ out_text += 91 -(65 - (c - kk)); }
+      else {out_text += c - kk;}
+	}  
+  }
+    break;
+  }
+  return out_text;
 }
