@@ -9,25 +9,22 @@ ProcessCmdArgs::programSettings ProcessCmdArgs::processCommandLine(const std::ve
 		if (args[i] == "-v" || args[i] == "--version") { psets_.versionRequested = true;} // print version information
 		if (args[i] == "-i")
 		{
-			i+=1;
-			if (i > args.size()-1){ std::cout << "No input file name specified.!!" << std::endl; psets_.inputError = true;}
-			else psets_.inputFileName = args[i];
+			if (i+1 > args.size()-1){ std::cout << "No input file name specified.!!" << std::endl; psets_.inputError = true;}
+			else psets_.inputFileName = args[i+1];
 		}
 		if (args[i] == "-o")
 		{
-			i+=1;
-			if (i > args.size()-1){ std::cout << "No output file name specified.!!" << std::endl; psets_.inputError = true;}
-			else psets_.outputFileName = args[i];
+			if (i+1 > args.size()-1){ std::cout << "No output file name specified.!!" << std::endl; psets_.inputError = true;}
+			else psets_.outputFileName = args[i+1];
 		}
 		if (args[i] == "-k")
 		{
-      			i+=1;
-      			if (i > args.size()-1){ std::cout << "No key provided.!!" << std::endl; psets_.inputError = true;}
-      			else psets_.key = std::stoi(args[i]);
+      			if (i+1 > args.size()-1){ std::cout << "No key provided.!!" << std::endl; psets_.inputError = true;}
+      			else psets_.key = std::stoi(args[i+1]);
 		}
    		if (args[i] == "--encrypt" || args[i] == "--decrypt")
    		 {
-		   psets_.cMode = (args[i] == "encrypt") ? CipherMode::encrypt : CipherMode::decrypt;
+		   psets_.cMode = (args[i] == "--encrypt") ? CipherMode::encrypt : CipherMode::decrypt;
     		 }
 		//else {helpRequested = 1; return 0;}
 	  }

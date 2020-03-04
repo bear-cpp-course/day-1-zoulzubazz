@@ -23,7 +23,4 @@ class ProcessCmdArgs{
   /*struct ProcessCmdArgs:: */
 programSettings processCommandLine(const std::vector<std::string>& args);
 };
-
-
-
 #endif
